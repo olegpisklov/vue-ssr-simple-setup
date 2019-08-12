@@ -7,7 +7,7 @@ export default context => {
     // everything is ready before rendering.
     return new Promise((resolve, reject) => {
         const { app, router } = createApp();
-
+console.log('context', context.url);
         // set server-side router's location
         router.push(context.url);
 

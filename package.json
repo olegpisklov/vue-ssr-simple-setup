@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./config/webpack.client.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config ./config/webpack.client.config.js"
+    "build:client": "cross-env NODE_ENV=production webpack --config ./config/webpack.client.config.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.config.js"
   },
   "dependencies": {
     "vue": "^2.6.10",
-    "vue-router": "^3.1.2"
+    "vue-router": "^3.1.2",
+    "vue-server-renderer": "^2.6.10",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
