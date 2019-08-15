@@ -15,7 +15,7 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 });
 
 // serve webpack bundle output
-// app.use(devMiddleware);
+app.use(devMiddleware);
 
 app.get('/', async (req, res) => {
     const context = {
