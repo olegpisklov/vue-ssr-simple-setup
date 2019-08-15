@@ -2,22 +2,26 @@ const express = require('express');
 const app = express();
 
 const vueServerRenderer = require('vue-server-renderer');
+const webpack = require('webpack');
 
 const renderer = vueServerRenderer.createBundleRenderer(require('./dist/vue-ssr-server-bundle.json'), {runInNewContext: false, template: ''});
+const clientConfig = require('./config/webpack.client.config');
+const compiler = webpack(clientConfig);
+
+const devMiddleware = require('webpack-dev-middleware')(compiler, {
+    publicPath: '/',
+    serverSideRender: true,
+    logLevel: 'silent',
+});
+
+// serve webpack bundle output
+// app.use(devMiddleware);
 
 app.get('/', async (req, res) => {
     const context = {
         url: req.subRoute || '/',
     };
-    let html;
-
-    try {
-        html = await renderer.renderToString(context);
-    } catch (e) {
-        console.log(e);
-    }
-
-    console.log('HTML', html);
+    const html = await renderer.renderToString(context);
 
     res.end(html);
 });
