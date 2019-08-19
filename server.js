@@ -13,9 +13,10 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
     serverSideRender: true,
     logLevel: 'silent',
 });
+const port = 3000;
 
 // serve webpack bundle output
-app.use(devMiddleware);
+// app.use(devMiddleware);
 
 app.get('/', async (req, res) => {
     const context = {
@@ -26,4 +27,4 @@ app.get('/', async (req, res) => {
     res.end(html);
 });
 
-app.listen(3000, () => console.log(`Listening on: 3000`));
+app.listen(port, () => console.log(`Listening on: ${port}`));
