@@ -8,12 +8,14 @@ const webpack = require('webpack');
 
 const clientConfig = require('./config/webpack.client.config');
 const compiler = webpack(clientConfig);
-
+const indexPath = path.resolve(__dirname, 'index.html');
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: '/',
     serverSideRender: true,
     logLevel: 'silent',
+    index: indexPath,
 });
+
 const port = 3000;
 
 // serve webpack bundle output
@@ -23,7 +25,7 @@ const renderer = vueServerRenderer.createBundleRenderer(
     require('./dist/vue-ssr-server-bundle.json'),
     {
         runInNewContext: false,
-        template: fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+        template: fs.readFileSync(indexPath, 'utf-8')
     }
 );
 
