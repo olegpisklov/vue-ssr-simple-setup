@@ -1,10 +1,11 @@
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 const app = express();
 
 const vueServerRenderer = require('vue-server-renderer');
 const webpack = require('webpack');
 
-const renderer = vueServerRenderer.createBundleRenderer(require('./dist/vue-ssr-server-bundle.json'), {runInNewContext: false, template: ''});
 const clientConfig = require('./config/webpack.client.config');
 const compiler = webpack(clientConfig);
 
@@ -16,7 +17,15 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 const port = 3000;
 
 // serve webpack bundle output
-// app.use(devMiddleware);
+app.use(devMiddleware);
+
+const renderer = vueServerRenderer.createBundleRenderer(
+    require('./dist/vue-ssr-server-bundle.json'),
+    {
+        runInNewContext: false,
+        template: fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+    }
+);
 
 app.get('/', async (req, res) => {
     const context = {
