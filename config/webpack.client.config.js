@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const srcPath = path.resolve(process.cwd(), 'src');
@@ -12,7 +13,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(process.cwd(), 'dist'),
-        publicPath: '/',
+        publicPath: '/public',
         filename: isProduction ? '[name].[hash].js' : '[name].js',
         sourceMapFilename: isProduction ? '[name].[hash].js.map' : '[name].js.map',
     },
@@ -46,13 +47,22 @@ module.exports = {
                 ]
             },
             {
-                test: /\.sass$/,
+                test: /\.scss$/,
                 use: [
-                    isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
-                    { loader: 'css-loader', options: { sourceMap: !isProduction } },
-                    { loader: 'sass-loader', options: { sourceMap: !isProduction } }
-                ]
-            },
+                    // isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+                  'css-loader',
+                  {
+                    loader: 'postcss-loader',
+                    options: {
+                        plugins: [
+                            autoprefixer()
+                        ],
+                        sourceMap: !isProduction
+                    }
+                },
+                  'sass-loader',
+                ],
+              },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 use: [
@@ -84,10 +94,10 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
-            inject: true
-        }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'index.html',
+        //     template: 'index.html',
+        //     inject: true
+        // }),
     ]
 };

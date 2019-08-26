@@ -10,13 +10,14 @@ const clientConfig = require('./config/webpack.client.config');
 const compiler = webpack(clientConfig);
 const indexPath = path.resolve(__dirname, 'index.html');
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
-    publicPath: '/',
+    publicPath: '/public',
     serverSideRender: true,
-    logLevel: 'silent',
-    index: indexPath,
+    logLevel: 'silent'
 });
 
 const port = 3000;
+
+app.use('/public',  express.static(path.resolve(__dirname, './dist')));
 
 // serve webpack bundle output
 app.use(devMiddleware);

@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>Hello world</h1>
+    <div class="main">
+        <h1>Vue SSR Simple Setup</h1>
     </div>
 </template>
 
