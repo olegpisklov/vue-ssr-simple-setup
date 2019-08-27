@@ -49,18 +49,15 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    // isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
-                  'css-loader',
-                  {
-                    loader: 'postcss-loader',
-                    options: {
-                        plugins: [
-                            autoprefixer()
-                        ],
-                        sourceMap: !isProduction
-                    }
-                },
-                  'sass-loader',
+                    isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [autoprefixer]
+                        }
+                    },
+                    'sass-loader',
                 ],
               },
             {
@@ -83,8 +80,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 10000,
-                            name: '[name].[hash:7].[ext]',
-                            publicPath: '/'
+                            name: '[name].[hash:7].[ext]'
                         }
                     }
                 ]
@@ -94,10 +90,9 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
-        // new HtmlWebpackPlugin({
-        //     filename: 'index.html',
-        //     template: 'index.html',
-        //     inject: true
-        // }),
+        new MiniCssExtractPlugin({
+            filename: isProduction ? '[name].[contenthash].css' : '[name].css',
+            hmr: !isProduction,
+        })
     ]
 };

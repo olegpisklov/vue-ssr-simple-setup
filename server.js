@@ -12,7 +12,7 @@ const indexPath = path.resolve(__dirname, 'index.html');
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: '/public',
     serverSideRender: true,
-    logLevel: 'silent'
+    logLevel: 'debug'
 });
 
 const port = 3000;
