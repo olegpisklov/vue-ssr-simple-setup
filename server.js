@@ -33,6 +33,9 @@ const renderer = vueServerRenderer.createBundleRenderer(
 app.get('/', async (req, res) => {
     const context = {
         url: req.subRoute || '/',
+        state: {
+            title: 'Vue SSR Simple Steps'
+        }
     };
     const html = await renderer.renderToString(context);
 

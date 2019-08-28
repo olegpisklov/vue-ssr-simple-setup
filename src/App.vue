@@ -1,11 +1,18 @@
 <template>
     <div class="main">
-        <h1>Vue SSR Simple Setup</h1>
+        <h1>{{title}}</h1>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
-        name: 'App'
+        name: 'App',
+        computed: {
+            ...mapGetters({
+                title: 'title'
+            })
+        },
     };
 </script>
