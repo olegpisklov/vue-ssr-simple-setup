@@ -2,7 +2,7 @@
   "name": "vue-ssr-simple-steps",
   "version": "0.1.0",
   "scripts": {
-    "dev": "nodemon ./server.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./server.js",
     "build:client": "cross-env NODE_ENV=production webpack --config ./config/webpack.client.config.js",
     "build:server": "cross-env NODE_ENV=production webpack --config ./config/webpack.server.config.js"
   },

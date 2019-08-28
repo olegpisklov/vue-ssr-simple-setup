@@ -1,4 +1,3 @@
-// entry-server.js
 import { createApp } from './app';
 
 export default context => {

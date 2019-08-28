@@ -1,27 +1,20 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const app = express();
-
 const vueServerRenderer = require('vue-server-renderer');
-const webpack = require('webpack');
-
-const clientConfig = require('./config/webpack.client.config');
-const compiler = webpack(clientConfig);
-const indexPath = path.resolve(__dirname, 'index.html');
-const devMiddleware = require('webpack-dev-middleware')(compiler, {
-    publicPath: '/public',
-    serverSideRender: true,
-    logLevel: 'debug'
-});
+const setupDevServer = require('./middleware/setup-dev-server');
 
 const port = 3000;
+const app = express();
+const publicPath = '/public';
 
-app.use('/public',  express.static(path.resolve(__dirname, './dist')));
+app.use(publicPath,  express.static(path.resolve(__dirname, './dist')));
 
-// serve webpack bundle output
-app.use(devMiddleware);
+if (process.env.NODE_ENV === 'development') {
+    app.use(setupDevServer(publicPath));
+}
 
+const indexPath = path.resolve(__dirname, 'index.html');
 const renderer = vueServerRenderer.createBundleRenderer(
     require('./dist/vue-ssr-server-bundle.json'),
     {

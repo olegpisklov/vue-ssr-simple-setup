@@ -15,5 +15,6 @@ export const createApp = (context) =>  {
         router,
         render: h => h(App),
     });
+    
     return {app, router};
 };

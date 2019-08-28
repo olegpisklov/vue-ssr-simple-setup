@@ -7,23 +7,15 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Build client bundle for production
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+npm run build:client
 ```
 
-### Lints and fixes files
+### Build SSR server bundle for production
 ```
-npm run lint
+npm run build:server
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
