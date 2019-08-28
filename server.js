@@ -11,7 +11,7 @@ const publicPath = '/public';
 app.use(publicPath,  express.static(path.resolve(__dirname, './dist')));
 
 if (process.env.NODE_ENV === 'development') {
-    app.use(setupDevServer(publicPath));
+    setupDevServer(app, publicPath);
 }
 
 const indexPath = path.resolve(__dirname, 'index.html');

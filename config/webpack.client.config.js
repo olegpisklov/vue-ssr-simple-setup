@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,7 +10,7 @@ const srcPath = path.resolve(process.cwd(), 'src');
 
 module.exports = {
     entry: {
-        app: path.join(srcPath, 'client-entry.js')
+        app: [path.join(srcPath, 'client-entry.js'), 'webpack-hot-middleware/client']
     },
     output: {
         path: path.resolve(process.cwd(), 'dist'),
@@ -93,6 +94,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: isProduction ? '[name].[contenthash].css' : '[name].css',
             hmr: !isProduction,
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
     ]
 };

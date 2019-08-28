@@ -1,11 +1,13 @@
-module.exports = (publicPath) => {
+module.exports = (app, publicPath) => {
     const webpack = require('webpack');
     const clientConfig = require('../config/webpack.client.config');
     const compiler = webpack(clientConfig);
 
-    return  require('webpack-dev-middleware')(compiler, {
+    app.use(require('webpack-dev-middleware')(compiler, {
         publicPath,
         serverSideRender: true,
         logLevel: 'debug'
-    });
+    }));
+
+    app.use(require('webpack-hot-middleware')(compiler));
 };
