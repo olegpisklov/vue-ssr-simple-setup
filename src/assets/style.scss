@@ -1,5 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;   
+}
+
 .main {
-    padding-top: 50%;
-    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;    
     text-align: center;
+    background-image: url("./images/background-blur.jpg");
+    background-size: cover;
+
+    h1 {
+        color: white;
+        font-weight: 100;
+        white-space: nowrap;
+    }
 }
