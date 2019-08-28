@@ -42,14 +42,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
                     { loader: 'css-loader', options: { sourceMap: !isProduction } },
                 ]
             },
             {
                 test: /\.scss$/,
                 use: [
-                    isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',
