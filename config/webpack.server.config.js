@@ -6,14 +6,8 @@ const path = require('path');
 const srcPath = path.resolve(process.cwd(), 'src');
 
 module.exports = {
-    // Point entry to your app's server entry file
     entry: path.join(srcPath, 'server-entry.js'),
-
-    // This allows webpack to handle dynamic imports in a Node-appropriate
-    // fashion, and also tells `vue-loader` to emit server-oriented code when
-    // compiling Vue components.
     target: 'node',
-
     // For bundle renderer source map support
     devtool: 'source-map',
     mode: "development",

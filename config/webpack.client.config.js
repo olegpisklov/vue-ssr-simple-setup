@@ -10,7 +10,7 @@ const srcPath = path.resolve(process.cwd(), 'src');
 
 module.exports = {
     entry: {
-        app: [path.join(srcPath, 'client-entry.js'), 'webpack-hot-middleware/client']
+        app: path.join(srcPath, 'client-entry.js')
     },
     output: {
         path: path.resolve(process.cwd(), 'dist'),

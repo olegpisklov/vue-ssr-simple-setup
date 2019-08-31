@@ -2,16 +2,17 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const vueServerRenderer = require('vue-server-renderer');
-const setupDevServer = require('./middleware/setup-dev-server');
+const setupDevServer = require('./config/setup-dev-server');
 
 const port = 3000;
 const app = express();
-const publicPath = '/public';
 
-app.use(publicPath,  express.static(path.resolve(__dirname, './dist')));
+app.use('/public',  express.static(path.resolve(__dirname, './dist')));
 
 if (process.env.NODE_ENV === 'development') {
-    setupDevServer(app, publicPath);
+    setupDevServer(app, () => {
+        
+    });
 }
 
 const indexPath = path.resolve(__dirname, 'index.html');

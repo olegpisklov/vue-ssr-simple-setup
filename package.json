@@ -48,5 +48,8 @@
     "webpack-dev-server": "^3.8.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.1"
+  },
+  "nodemonConfig": {
+    "watch": ["server.js", "index.html", "config/setup-dev-server.js"]
   }
 }
