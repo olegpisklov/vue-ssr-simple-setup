@@ -7,22 +7,24 @@ const setupDevServer = require('./config/setup-dev-server');
 const port = 3000;
 const app = express();
 
+const createRenderer = (bundle) =>
+    vueServerRenderer.createBundleRenderer(bundle, {
+        runInNewContext: false,
+        template: fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+    });
+
+let renderer;
+
 app.use('/public',  express.static(path.resolve(__dirname, './dist')));
 
-if (process.env.NODE_ENV === 'development') {
-    setupDevServer(app, () => {
-        
-    });
-}
 
-const indexPath = path.resolve(__dirname, 'index.html');
-const renderer = vueServerRenderer.createBundleRenderer(
-    require('./dist/vue-ssr-server-bundle.json'),
-    {
-        runInNewContext: false,
-        template: fs.readFileSync(indexPath, 'utf-8')
-    }
-);
+if (process.env.NODE_ENV === 'development') {
+    setupDevServer(app, (serverBundle) => {
+        renderer = createRenderer(serverBundle);
+    });
+} else {
+    createRenderer(require('./dist/vue-ssr-server-bundle.json'));
+}
 
 app.get('/', async (req, res) => {
     const context = {
