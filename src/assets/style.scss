@@ -14,10 +14,15 @@ html, body, #app {
     text-align: center;
     background-image: url("./images/background-blur.jpg");
     background-size: cover;
+    color: white;
 
     h1 {
-        color: white;
         font-weight: 100;
         white-space: nowrap;
+    }
+
+    li {
+        font-size: 20px;
+        padding: 5px;
     }
 }

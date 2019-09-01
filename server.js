@@ -14,8 +14,8 @@ const createRenderer = (bundle) =>
     });
 let renderer;
 
+// you may want to serve static files with nginx or CDN in production
 app.use('/public',  express.static(path.resolve(__dirname, './dist')));
-
 
 if (process.env.NODE_ENV === 'development') {
     setupDevServer(app, (serverBundle) => {
@@ -29,12 +29,28 @@ app.get('/', async (req, res) => {
     const context = {
         url: req.subRoute || '/',
         state: {
-            title: 'Vue SSR Simple Setup'
+            title: 'Vue SSR Simple Setup',
+            users: []
         }
     };
     const html = await renderer.renderToString(context);
 
     res.end(html);
+});
+
+// test endpoint for serverPrefetch demonstration
+app.get('/users', (req, res) => {
+    res.json([{
+            name: 'Albert',
+            lastname: 'Einstein'
+        }, {
+            name: 'Isaac',
+            lastname: 'Newton'
+        }, {
+            name: 'Marie',
+            lastname: 'Curie'
+        }]
+    );
 });
 
 app.listen(port, () => console.log(`Listening on: ${port}`));

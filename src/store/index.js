@@ -6,9 +6,9 @@ import * as actions from './actions';
 const createStore = (state) => {
     return new Store({
         state,
-        // mutations,
+        mutations,
         getters,
-        // actions,
+        actions,
         strict: process.env.NODE_ENV !== 'production',
     });
 };
