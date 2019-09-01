@@ -12,7 +12,6 @@ const createRenderer = (bundle) =>
         runInNewContext: false,
         template: fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
     });
-
 let renderer;
 
 app.use('/public',  express.static(path.resolve(__dirname, './dist')));
@@ -23,14 +22,14 @@ if (process.env.NODE_ENV === 'development') {
         renderer = createRenderer(serverBundle);
     });
 } else {
-    createRenderer(require('./dist/vue-ssr-server-bundle.json'));
+    renderer = createRenderer(require('./dist/vue-ssr-server-bundle.json'));
 }
 
 app.get('/', async (req, res) => {
     const context = {
         url: req.subRoute || '/',
         state: {
-            title: 'Vue SSR Simple Steps'
+            title: 'Vue SSR Simple Setup'
         }
     };
     const html = await renderer.renderToString(context);
