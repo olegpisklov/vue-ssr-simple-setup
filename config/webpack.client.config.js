@@ -19,7 +19,7 @@ module.exports = {
         sourceMapFilename: isProduction ? '[name].[hash].js.map' : '[name].js.map',
     },
 
-    mode: "development",
+    mode: process.env.NODE_ENV,
     resolve: {
         alias: {
             '@': path.join(srcPath, 'client-entry.js')

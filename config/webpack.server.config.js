@@ -10,7 +10,7 @@ module.exports = {
     target: 'node',
     // For bundle renderer source map support
     devtool: 'source-map',
-    mode: "development",
+    mode: process.env.NODE_ENV,
     module: {
         rules: [
             {
