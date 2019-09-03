@@ -15,7 +15,7 @@ export default context => {
             const matchedComponents = router.getMatchedComponents();
             // no matched routes, reject with 404
             if (!matchedComponents.length) {
-                return reject({ code: 404 })
+                return reject({ code: 404 });
             }
             // This `rendered` hook is called when the app has finished rendering
             context.rendered = () => {
@@ -24,11 +24,11 @@ export default context => {
                 // When we attach the state to the context, and the `template` option
                 // is used for the renderer, the state will automatically be
                 // serialized and injected into the HTML as `window.__INITIAL_STATE__`.
-                context.state = store.state
+                context.state = store.state;
             };
 
             // the Promise should resolve to the app instance so it can be rendered
-            resolve(app)
-        }, reject)
+            resolve(app);
+        }, reject);
     })
 }
