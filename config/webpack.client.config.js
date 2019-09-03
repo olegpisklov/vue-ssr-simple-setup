@@ -21,9 +21,6 @@ module.exports = {
 
     mode: process.env.NODE_ENV,
     resolve: {
-        alias: {
-            '@': path.join(srcPath, 'client-entry.js')
-        },
         extensions: ['.js', '.vue'],
     },
     devtool: isProduction ? 'source-map' : 'eval-source-map',
@@ -60,7 +57,7 @@ module.exports = {
                     },
                     'sass-loader',
                 ],
-              },
+            },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 use: [
@@ -91,10 +88,19 @@ module.exports = {
 
     plugins: [
         new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
-            filename: isProduction ? '[name].[contenthash].css' : '[name].css',
-            hmr: !isProduction,
-        }),
-        new webpack.HotModuleReplacementPlugin(),
+        ...(isProduction ? [
+            new webpack.optimize.UglifyJsPlugin({
+                compress: { warnings: false }
+            }),
+            new MiniCssExtractPlugin({
+                filename: '[name].[contenthash].css',
+            }),
+        ] : [
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+                hmr: true,
+            }),
+            new webpack.HotModuleReplacementPlugin(),
+        ])
     ]
 };

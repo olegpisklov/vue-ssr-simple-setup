@@ -33,12 +33,21 @@ app.get('/', async (req, res) => {
             users: []
         }
     };
-    const html = await renderer.renderToString(context);
+    let html;
+
+    try {
+        html = await renderer.renderToString(context);
+    } catch (error) {
+        if (error.code === 404) {
+            return res.status(404).send('404 | Page Not Found');
+        }
+        return res.status(500).send('500 | Internal Server Error');
+    }
 
     res.end(html);
 });
 
-// test endpoint for serverPrefetch demonstration
+// the endpoint for 'serverPrefetch' demonstration
 app.get('/users', (req, res) => {
     res.json([{
             name: 'Albert',
