@@ -5,7 +5,7 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run Express server with hot-reload support for development
 ```
 npm run dev
 ```
