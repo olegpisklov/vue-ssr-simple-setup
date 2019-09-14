@@ -10,8 +10,6 @@ const srcPath = path.resolve(process.cwd(), 'src');
 module.exports = merge(base, {
     entry: path.join(srcPath, 'server-entry.js'),
     target: 'node',
-    // For bundle renderer source map support
-    devtool: 'source-map',
     // This tells the server bundle to use Node-style exports
     output: {
         libraryTarget: 'commonjs2'

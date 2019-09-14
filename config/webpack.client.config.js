@@ -21,8 +21,7 @@ module.exports = merge(base, {
     },
     resolve: {
         extensions: ['.js', '.vue'],
-    },
-    devtool: isProduction ? 'source-map' : 'eval-source-map',
+    },   
     module: {
         rules: [          
             {

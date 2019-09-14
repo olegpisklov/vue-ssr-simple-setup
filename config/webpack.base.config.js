@@ -1,8 +1,10 @@
 const path = require('path');
 const srcPath = path.resolve(process.cwd(), 'src');
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     mode: process.env.NODE_ENV,
+    devtool: isProduction ? 'source-map' : 'eval-source-map',
     module: {
         rules: [
             {
