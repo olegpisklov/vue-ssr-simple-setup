@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const autoprefixer = require('autoprefixer');
 
 const base = require('./webpack.base.config');
@@ -48,9 +47,8 @@ module.exports = merge(base, {
         ]
     },
 
-    plugins: [
-        new VueLoaderPlugin(),
-        ...(isProduction ? [
+    plugins: (isProduction ? 
+        [
             new webpack.optimize.UglifyJsPlugin({
                 compress: { warnings: false }
             }),
@@ -63,6 +61,6 @@ module.exports = merge(base, {
                 hmr: true,
             }),
             new webpack.HotModuleReplacementPlugin(),
-        ])
-    ]
+        ]
+    )
 });

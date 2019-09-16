@@ -1,5 +1,4 @@
 const nodeExternals = require('webpack-node-externals');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
@@ -31,6 +30,5 @@ module.exports = merge(base, {
     // `vue-ssr-server-bundle.json`
     plugins: [
         new VueSSRServerPlugin(),
-        new VueLoaderPlugin(),
     ]
 });
