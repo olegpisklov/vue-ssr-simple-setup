@@ -10,6 +10,13 @@
 
     export default {
         name: 'App',
+
+        metaInfo: {
+            meta: [
+                { charset: 'utf-8' },
+            ]
+        },
+
         computed: {
             ...mapGetters({
                 title: 'title',

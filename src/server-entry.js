@@ -6,9 +6,12 @@ export default context => {
     // everything is ready before rendering.
     return new Promise((resolve, reject) => {
         const { app, router, store } = createApp(context);
+        const meta = app.$meta();
 
         // set server-side router's location
         router.push(context.url);
+
+        context.meta = meta;
 
         // wait until router has resolved possible async components and hooks
         router.onReady(() => {

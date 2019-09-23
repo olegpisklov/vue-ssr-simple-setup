@@ -7,6 +7,13 @@
 
 <script>
     export default {
-        name: 'About'
+        name: 'About',
+
+        metaInfo: {
+            title: 'Vue SSR Simple Setup About',
+            meta: [
+                { name: 'description', content: 'About page description' }
+            ]
+        },
     };
 </script>

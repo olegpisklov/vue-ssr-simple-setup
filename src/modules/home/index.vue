@@ -12,6 +12,13 @@
     export default {
         name: 'Home',
 
+        metaInfo: {
+            title: 'Vue SSR Simple Setup Home',
+            meta: [
+                { name: 'description', content: 'Home page description' }
+            ]
+        },
+
         components: {
             UsersList,
         },
