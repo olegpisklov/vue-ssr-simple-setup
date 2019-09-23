@@ -1,17 +1,21 @@
 <template>
     <div>        
         <router-link to="/about">Go to About page</router-link>
-        <ul>
-            <li v-for="user in users">{{user.name}} {{user.lastname}}</li>
-        </ul>
+        <users-list :users="users"></users-list>
     </div>
 </template>
 
 <script>
     import {mapGetters} from 'vuex';
+    import UsersList from './components/users-list/index.vue';
 
     export default {
         name: 'Home',
+
+        components: {
+            UsersList,
+        },
+
         computed: {
             ...mapGetters({
                 users: 'users',
