@@ -6,7 +6,7 @@ This repo is an example of SSR setup for Vue.js application using:
 * _webpack-dev-middleware_ and _webpack-hot-middleware_ for comfortable dev environment;
 * _Babel_ for transpiling modern js syntax;
 * _Vuex_ for a state management;
-* _vue-meta_ for metadata managing.
+* _vue-meta_ for metadata management.
 
 Feel free to use it as a boilerplate for you projects.
 
