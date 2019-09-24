@@ -1,6 +1,12 @@
 # Vue SSR simple setup
 
-Setup SSR for Vue application using Webpack 4, Node.js Express server, webpack-dev-middleware and webpack-hot-middleware for comfortable dev environment, Babel for transpiling modern js syntax and Vuex for a state management.
+This repo is an example of SSR setup for Vue.js application using:
+* _Webpack 4_ for building client and server bundles;
+* _node.js Express_ server;
+* _webpack-dev-middleware_ and _webpack-hot-middleware_ for comfortable dev environment;
+* _Babel_ for transpiling modern js syntax;
+* _Vuex_ for a state management;
+* _vue-meta_ for metadata managing.
 
 ## Project setup
 ```

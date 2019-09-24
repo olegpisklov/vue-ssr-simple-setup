@@ -6,6 +6,7 @@ export default context => {
     // everything is ready before rendering.
     return new Promise((resolve, reject) => {
         const { app, router, store } = createApp(context);
+        // metadata is provided by vue-meta plugin
         const meta = app.$meta();
 
         // set server-side router's location
