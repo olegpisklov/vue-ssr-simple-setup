@@ -8,7 +8,7 @@ This repo is an example of SSR setup for Vue.js application using:
 * _Vuex_ for a state management;
 * _vue-meta_ for metadata management.
 
-Feel free to use it as a boilerplate for you projects.
+Feel free to use it as a boilerplate for your projects.
 
 ## Project setup
 ```
