@@ -1,4 +1,4 @@
-# Vue SSR simple setup
+# Vue SSR Simple Setup
 
 This repo is an example of SSR setup for Vue.js application using:
 * _Webpack 4_ for building client and server bundles;
