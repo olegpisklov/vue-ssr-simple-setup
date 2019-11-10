@@ -49,9 +49,6 @@ module.exports = merge(base, {
 
     plugins: (isProduction ? 
         [
-            new webpack.optimize.UglifyJsPlugin({
-                compress: { warnings: false }
-            }),
             new MiniCssExtractPlugin({
                 filename: '[name].[contenthash].css',
             }),
