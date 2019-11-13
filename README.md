@@ -15,7 +15,7 @@ Feel free to use it as a boilerplate for your projects.
 npm install
 ```
 
-### Run Express server with hot-reload support for development
+### Run Express dev server with HMR support
 ```
 npm run dev
 ```
