@@ -1,4 +1,3 @@
-// router.js
 import Vue from 'vue';
 import Router from 'vue-router';
 import About from '../modules/about/index.vue';
