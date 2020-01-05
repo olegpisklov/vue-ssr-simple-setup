@@ -7,7 +7,7 @@
  */
 const setupDevServer = (app, onServerBundleReady) => {
     const webpack = require('webpack');
-    const MFS = require('memory-fs')
+    const MFS = require('memory-fs');
     const path = require('path');
     const clientConfig = require('./webpack.client.config');
     const serverConfig = require('./webpack.server.config');
@@ -32,7 +32,7 @@ const setupDevServer = (app, onServerBundleReady) => {
     const serverCompiler = webpack(serverConfig);
     const mfs = new MFS();
 
-    serverCompiler.outputFileSystem = mfs
+    serverCompiler.outputFileSystem = mfs;
     serverCompiler.watch({}, (error, stats) => {
         if (error) throw error;
         
