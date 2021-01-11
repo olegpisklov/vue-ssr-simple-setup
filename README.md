@@ -27,7 +27,7 @@ npm run dev
 npm run build:client
 ```
 
-### Build SSR server bundle for production
+### Build SSR bundle for production
 ```
 npm run build:server
 ```
